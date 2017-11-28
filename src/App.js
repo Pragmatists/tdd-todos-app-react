@@ -14,7 +14,11 @@ class App extends Component {
                 <p className="App-intro">
                     To get started, edit <code>src/App.js</code> and save to reload.
                 </p>
-                <Todos />
+                <Todos todos={[
+                    { 'id': 1, 'title': 'Clean up the fridge', 'completed': false },
+                    { 'id': 2, 'title': 'quis ut nam facilis et officia qui', 'completed': false },
+                    { 'id': 3, 'title': 'fugiat veniam minus', 'completed': false },
+                ]}/>
             </div>
         );
     }
