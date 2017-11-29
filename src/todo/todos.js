@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TodosList from './todosList';
 import TodosNew from './todosNew';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 
 class Todos extends Component {
@@ -29,16 +30,12 @@ class Todos extends Component {
     return (
       <div><h1>Your todos for today</h1>
         <div data-todos-count>You have {this.state.todos.length} todos!</div>
+        <Link to={'/new'}>New todo</Link>
         <TodosList todos={this.state.todos} />
-        <TodosNew newTodo={this.newTodo} />
       </div>
     )
   }
 
-  newTodo = (todo) => {
-    axios.post('http://localhost:3001/todos', todo)
-      .then(this.fetchData);
-  }
 }
 
 Todos.defaultProps = { todos: [] };

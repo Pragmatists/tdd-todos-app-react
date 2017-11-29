@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class TodosNew extends Component {
 
@@ -20,7 +21,9 @@ class TodosNew extends Component {
 
   onSubmit = (event) => {
     event.preventDefault();
-    this.props.newTodo(this.state.todo);
+    const { history } = this.props;
+    axios.post('http://localhost:3001/todos', this.state.todo)
+      .then(() => history.push('/home'));
   };
 
   render() {
@@ -36,6 +39,6 @@ class TodosNew extends Component {
   }
 }
 
-TodosNew.defaultProps = { todo: { title: '', completed: false, body: '', userId: 1 }, newTodo: f => f };
+TodosNew.defaultProps = { todo: { title: '', completed: false, body: '', userId: 1 } };
 
 export default TodosNew;
