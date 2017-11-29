@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { Jumbotron } from 'react-bootstrap';
 
 class TodosDetails extends Component {
 
@@ -23,8 +24,10 @@ class TodosDetails extends Component {
   render() {
     return (
       <div>
-        You definitely should do the following: <br />
-        {this.state.todo.title} <br/>
+        <Jumbotron>
+          <p>You definitely should do the following:</p>
+          <h1>{this.state.todo.title}</h1>
+        </Jumbotron>
         <Link to={'/home'}>Back to list</Link>
       </div>
     )

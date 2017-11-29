@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import TodosList from './todosList';
-import TodosNew from './todosNew';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -31,7 +30,7 @@ class Todos extends Component {
       <div><h1>Your todos for today</h1>
         <div data-todos-count>You have {this.state.todos.length} todos!</div>
         <Link to={'/new'}>New todo</Link>
-        <TodosList todos={this.state.todos} />
+        <TodosList todos={this.state.todos} onMarkComplete={this.fetchData}/>
       </div>
     )
   }
