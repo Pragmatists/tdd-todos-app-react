@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TodosList from './todosList';
 import TodosNew from './todosNew';
+import axios from 'axios';
 
 
 class Todos extends Component {
@@ -10,6 +11,14 @@ class Todos extends Component {
     this.state = {
       todos: props.todos
     }
+  }
+
+  componentDidMount() {
+    axios.get('http://localhost:3001/todos')
+      .then((response) => response.data)
+      .then(data => {
+        this.setState({ todos: data });
+      });
   }
 
   render() {
@@ -23,7 +32,7 @@ class Todos extends Component {
   }
 
   newTodo = (todo) => {
-    this.setState({todos: [...this.state.todos, todo]})
+    this.setState({ todos: [...this.state.todos, todo] })
   }
 }
 
