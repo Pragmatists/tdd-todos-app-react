@@ -2,15 +2,6 @@ import React, { Component } from 'react';
 import TodosList from './todosList';
 import TodosNew from './todosNew';
 
-// function Todos(props) {
-//   return (
-//     <div><h1>Your todos for today</h1>
-//       <div data-todos-count>You have {props.todos.length} todos!</div>
-//       <TodosList todos={props.todos} />
-//       <TodosNew newTodo={(todo) => {props.todos.push(todo); console.log(props.todos)}}/>
-//     </div>
-//   )
-// }
 
 class Todos extends Component {
 
