@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import React, { Component } from 'react';
 
 class TodosNew extends Component {
@@ -37,6 +36,6 @@ class TodosNew extends Component {
   }
 }
 
-TodosNew.defaultProps = { todo: { title: '', completed: false, id: _.uniqueId() }, newTodo: f => f };
+TodosNew.defaultProps = { todo: { title: '', completed: false, body: '', userId: 1 }, newTodo: f => f };
 
 export default TodosNew;

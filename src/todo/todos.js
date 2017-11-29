@@ -14,12 +14,16 @@ class Todos extends Component {
   }
 
   componentDidMount() {
+    this.fetchData();
+  }
+
+  fetchData = () => {
     axios.get('http://localhost:3001/todos')
       .then((response) => response.data)
       .then(data => {
         this.setState({ todos: data });
       });
-  }
+  };
 
   render() {
     return (
@@ -32,7 +36,8 @@ class Todos extends Component {
   }
 
   newTodo = (todo) => {
-    this.setState({ todos: [...this.state.todos, todo] })
+    axios.post('http://localhost:3001/todos', todo)
+      .then(this.fetchData);
   }
 }
 
