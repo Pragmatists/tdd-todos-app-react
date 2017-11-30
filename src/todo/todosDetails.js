@@ -23,9 +23,9 @@ class TodosDetails extends Component {
 
   render() {
     return (
-      <div>
+      <div className={'col-md-offset-2 col-md-8'}>
         <Jumbotron>
-          <p>You definitely should do the following:</p>
+          <p>I definitely should do the following:</p>
           <h1>{this.state.todo.title}</h1>
         </Jumbotron>
         <Link to={'/home'}>Back to list</Link>

@@ -19,8 +19,8 @@ function TodosList(props) {
   };
   return (
     <div>
-      <div>
-        <Table responsive data-todos-table>
+      <div className={'col-md-8'}>
+        <Table responsive hover data-todos-table>
           <thead>
           <tr>
             <th>What I should do</th>

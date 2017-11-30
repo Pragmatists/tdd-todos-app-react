@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TodosList from './todosList';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 
 class Todos extends Component {
@@ -27,9 +27,11 @@ class Todos extends Component {
 
   render() {
     return (
-      <div><h1>Your todos for today</h1>
-        <div data-todos-count>You have {this.state.todos.length} todos!</div>
-        <Link to={'/new'}>New todo</Link>
+      <div className={'col-md-offset-2'}>
+        <h1>My todos for today</h1>
+        <div data-todos-count>Wow. I have {this.state.todos.length} todos!</div>
+        <Button href={'/new'} bsStyle="primary">New todo</Button>
+
         <TodosList todos={this.state.todos} onMarkComplete={this.fetchData}/>
       </div>
     )
