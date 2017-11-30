@@ -19,7 +19,7 @@ function TodosList(props) {
   };
   return (
     <div>
-      <div className={'col-md-8'}>
+      <div className={'col-md-8'} style={{paddingLeft: '0px'}}>
         <Table responsive hover data-todos-table>
           <thead>
           <tr>

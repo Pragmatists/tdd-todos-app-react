@@ -19,6 +19,7 @@ class TodosDetails extends Component {
       .then(data => {
         this.setState({ todo: data });
       })
+      .catch(e => e);
   }
 
   render() {

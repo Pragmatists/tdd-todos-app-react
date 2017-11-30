@@ -22,7 +22,8 @@ class Todos extends Component {
       .then((response) => response.data)
       .then(data => {
         this.setState({ todos: data });
-      });
+      })
+      .catch(e => e);
   };
 
   render() {
