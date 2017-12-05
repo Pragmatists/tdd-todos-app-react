@@ -1,12 +1,13 @@
 import React from 'react';
 import Todos from './todos';
 import { mount } from 'enzyme';
+import TodosNew from "./todosNew";
 
 describe('Todos component', () => {
 
     it('renders header', () => {
         const wrapper = mount(<Todos />);
-        expect(wrapper.find('h1').text()).toEqual('Your todos for today');
+        expect(wrapper.find('[data-todos-header]').text()).toEqual('Your todos for today');
     });
 
     it('renders todos count for 1 todo', () => {
@@ -26,5 +27,10 @@ describe('Todos component', () => {
         const wrapper = mount(<Todos todos={todos} />);
         expect(wrapper.find('[data-todos-count]').text()).toEqual('You have 3 todos!');
     });
+
+    it('renders TodosNew component', () => {
+        const wrapper = mount(<Todos/>);
+        expect(wrapper.find(TodosNew)).toBeTruthy();
+    })
 });
 
