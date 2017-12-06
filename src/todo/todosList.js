@@ -1,11 +1,12 @@
 import React from 'react';
 import { Button, Table } from 'react-bootstrap';
+import {Link} from "react-router-dom";
 
 function TodosList(props) {
     const renderTodo = (todo) => {
         return (
             <tr key={todo.id}>
-                <td>{todo.title}</td>
+                <td><Link to={`/details/${todo.id}`}>{todo.title}</Link></td>
                 <td>{todo.completed ? 'Yes' : 'No'}</td>
                 <td><Button>Some action</Button></td>
             </tr>
