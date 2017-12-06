@@ -1,7 +1,7 @@
 import React from 'react';
 import TodosList from "./todosList";
-import TodosNew from "./todosNew";
 import axios from 'axios';
+import {Button} from "react-bootstrap";
 
 class Todos extends React.Component {
 
@@ -35,7 +35,7 @@ class Todos extends React.Component {
             <div className={'col-md-offset-2'}>
                 <h1 data-todos-header>Your todos for today</h1>
                 <div data-todos-count>You have {this.state.todos.length} todos!</div>
-                <TodosNew onNewTodo={this.onNewTodo}/>
+                <Button href={'/new'} bsStyle="primary">New todo</Button>
                 <TodosList todos={this.state.todos}/>
             </div>
         )
