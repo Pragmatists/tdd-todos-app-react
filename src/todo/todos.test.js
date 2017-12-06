@@ -64,6 +64,23 @@ describe('Todos component', () => {
             });
 
         });
+
+        it('submits new todo', (done) => {
+            const wrapper = mount(<Todos todos={[]}/>);
+            wrapper.instance().onNewTodo({title : 'My new todo'});
+
+            moxios.wait(async () => {
+
+                let request = moxios.requests.mostRecent();
+                request.respondWith({
+                    status: 200
+                }).then(function () {
+                    expect(JSON.parse(request.config.data)).toEqual(jasmine.objectContaining({title: 'My new todo'}));
+                    done();
+                })
+            });
+
+        })
     })
 });
 
