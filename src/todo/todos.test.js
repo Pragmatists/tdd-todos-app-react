@@ -3,11 +3,14 @@ import Todos from './todos';
 import {mount} from 'enzyme';
 import TodosNew from "./todosNew";
 import moxios from 'moxios'
+import {MemoryRouter} from "react-router-dom";
 
 describe('Todos component', () => {
 
     it('renders header', () => {
-        const wrapper = mount(<Todos/>);
+        const wrapper = mount(<MemoryRouter>
+            <Todos todos={[]}/>
+        </MemoryRouter>);
         expect(wrapper.find('[data-todos-header]').text()).toEqual('Your todos for today');
     });
 
@@ -15,7 +18,7 @@ describe('Todos component', () => {
         const todos = [
             {'id' : 1, 'title' : 'Clean up the fridge', 'completed' : false},
         ];
-        const wrapper = mount(<Todos todos={todos}/>);
+        const wrapper = mount(<MemoryRouter><Todos todos={todos}/></MemoryRouter>);
         expect(wrapper.find('[data-todos-count]').text()).toEqual('You have 1 todos!');
     });
 
@@ -25,12 +28,12 @@ describe('Todos component', () => {
             {'id' : 2, 'title' : 'quis ut nam facilis et officia qui', 'completed' : false},
             {'id' : 3, 'title' : 'fugiat veniam minus', 'completed' : false},
         ];
-        const wrapper = mount(<Todos todos={todos}/>);
+        const wrapper = mount(<MemoryRouter><Todos todos={todos}/></MemoryRouter>);
         expect(wrapper.find('[data-todos-count]').text()).toEqual('You have 3 todos!');
     });
 
     it('renders TodosNew component', () => {
-        const wrapper = mount(<Todos/>);
+        const wrapper = mount(<MemoryRouter><Todos/></MemoryRouter>);
         expect(wrapper.find(TodosNew)).toBeTruthy();
     });
 
@@ -47,7 +50,9 @@ describe('Todos component', () => {
         it('renders todos count from server', (done) => {
 
             const wrapper = mount(
-                <Todos todos={[]}/>
+                <MemoryRouter>
+                    <Todos todos={[]}/>
+                </MemoryRouter>
             );
             moxios.wait(async () => {
                 let request = moxios.requests.mostRecent();
@@ -73,9 +78,9 @@ describe('Todos component', () => {
 
                 let request = moxios.requests.mostRecent();
                 request.respondWith({
-                    status: 200
+                    status : 200
                 }).then(function () {
-                    expect(JSON.parse(request.config.data)).toEqual(jasmine.objectContaining({title: 'My new todo'}));
+                    expect(JSON.parse(request.config.data)).toEqual(jasmine.objectContaining({title : 'My new todo'}));
                     done();
                 })
             });

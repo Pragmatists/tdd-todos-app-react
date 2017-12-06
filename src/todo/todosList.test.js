@@ -2,12 +2,15 @@ import 'jest-enzyme';
 import React from 'react';
 import TodosList from './todosList';
 import {mount} from 'enzyme';
+import {MemoryRouter} from "react-router-dom";
 
 describe('TodosList component', () => {
 
     it('renders table', () => {
         const wrapper = mount(
+            <MemoryRouter>
             <TodosList/>
+            </MemoryRouter>
         );
         expect(wrapper.find('Table')).toBePresent();
     });
@@ -17,7 +20,7 @@ describe('TodosList component', () => {
             {'id' : 1, 'title' : 'Clean up the fridge', 'completed' : false},
         ];
         const wrapper = mount(
-            <TodosList todos={todos}/>
+            <MemoryRouter><TodosList todos={todos}/></MemoryRouter>
         );
         expect(wrapper.find('[data-todos-table] tbody tr').length).toEqual(1);
     });
@@ -29,7 +32,7 @@ describe('TodosList component', () => {
             {'id' : 3, 'title' : 'fugiat veniam minus', 'completed' : false},
         ];
         const wrapper = mount(
-            <TodosList todos={todos}/>
+            <MemoryRouter><TodosList todos={todos}/></MemoryRouter>
         );
         expect(wrapper.find('[data-todos-table] tbody tr').length).toEqual(3);
     });
