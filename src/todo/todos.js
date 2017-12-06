@@ -36,7 +36,7 @@ class Todos extends React.Component {
                 <h1 data-todos-header>Your todos for today</h1>
                 <div data-todos-count>You have {this.state.todos.length} todos!</div>
                 <Button href={'/new'} bsStyle="primary">New todo</Button>
-                <TodosList todos={this.state.todos}/>
+                <TodosList todos={this.state.todos} onMarkComplete={this.fetchData}/>
             </div>
         )
     }
